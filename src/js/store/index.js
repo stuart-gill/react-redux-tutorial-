@@ -7,7 +7,7 @@
 // );
 // export default store;
 
-//or, if you are using Redux Dev Tools
+//OR, if you are using Redux Dev Tools
 import { createStore, applyMiddleware, compose } from "redux";
 import rootReducer from "../reducers/index";
 import { forbiddenWordsMiddleware } from "../middleware";
