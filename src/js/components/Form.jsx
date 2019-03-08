@@ -54,7 +54,7 @@ class ConnectedForm extends Component {
   }
 }
 
-//component is exported as Form, despite class being connected form.
+//component is exported as Form, despite class being ConnectedForm.
 //Form is the result of connecting ConnectedForm with the redux store
 
 const Form = connect(
