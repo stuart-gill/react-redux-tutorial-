@@ -3,6 +3,7 @@
 //While inside middleware you can access getState and dispatch
 
 import { ADD_ARTICLE } from "../constants/action-types";
+import { FOUND_BAD_WORD } from "../constants/action-types";
 const forbiddenWords = ["spam", "money"];
 export function forbiddenWordsMiddleware({ dispatch }) {
   return function(next) {
@@ -13,7 +14,7 @@ export function forbiddenWordsMiddleware({ dispatch }) {
           action.payload.title.includes(word)
         );
         if (foundWord.length) {
-          return dispatch({ type: "FOUND_BAD_WORD" });
+          return dispatch({ type: FOUND_BAD_WORD });
         }
       }
       return next(action);

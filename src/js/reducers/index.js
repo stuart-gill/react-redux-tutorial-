@@ -6,12 +6,14 @@ const initialState = {
 function rootReducer(state = initialState, action) {
   if (action.type === ADD_ARTICLE) {
     return Object.assign({}, state, {
-      articles: state.articles.concat(action.payload)
+      articles: state.articles.concat(action.payload),
+      errors: ""
     });
   }
   if (action.type === FOUND_BAD_WORD) {
+    console.log("error reducer run");
     return Object.assign({}, state, {
-      errors: action.payload
+      errors: "you cannot enter the word"
     });
   }
   return state;
