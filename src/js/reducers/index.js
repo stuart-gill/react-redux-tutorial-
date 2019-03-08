@@ -13,7 +13,7 @@ function rootReducer(state = initialState, action) {
   if (action.type === FOUND_BAD_WORD) {
     console.log("error reducer run");
     return Object.assign({}, state, {
-      errors: "you cannot enter the word"
+      errors: `you cannot enter the word ${action.payload}`
     });
   }
   return state;
