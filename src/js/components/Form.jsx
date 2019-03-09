@@ -5,10 +5,10 @@ import { addArticle } from "../actions/index";
 
 function mapDispatchToProps(dispatch) {
   return {
-    addArticle: article => dispatch(addArticle(article))
+    addArticle: (article) => dispatch(addArticle(article))
   };
 }
-//mapDispatchToProps connects Redux actions to React props. This way a connected component is able to dispatch actions.
+//mapDispatchToProps connects Redux actions to React props. This way a connected component is able to dispatch actions. Need to look up object shorthand form of this.
 
 class ConnectedForm extends Component {
   constructor() {
@@ -28,6 +28,8 @@ class ConnectedForm extends Component {
     event.preventDefault();
     const { title } = this.state;
     const id = uuidv1();
+    console.log(id);
+    console.log({ id });
     this.props.addArticle({ title, id }); //this is the Redux part-- action dispatched
     this.setState({ title: "" });
   }
@@ -62,4 +64,4 @@ const Form = connect(
   mapDispatchToProps
 )(ConnectedForm);
 export default Form;
-//the first argument for connect must be null when mapStateToProps is absent like in the Form example. Otherwise you’ll get TypeError: dispatch is not a function
+//the first argument for connect must be null when mapStateToProps is absent like in the Form example. Otherwise you’ll get TypeError: dispatch is not a function. If mapStateToProps is absent, this component will not subscribe to the store, but will still receive the dispatch props

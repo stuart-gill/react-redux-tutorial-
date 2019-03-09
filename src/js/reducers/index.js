@@ -1,6 +1,11 @@
-import { ADD_ARTICLE, FOUND_BAD_WORD } from "../constants/action-types";
+import {
+  ADD_ARTICLE,
+  FOUND_BAD_WORD,
+  DATA_LOADED
+} from "../constants/action-types";
 const initialState = {
   articles: [],
+  remoteArticles: [],
   errors: ""
 };
 function rootReducer(state = initialState, action) {
@@ -14,6 +19,11 @@ function rootReducer(state = initialState, action) {
     console.log("error reducer run");
     return Object.assign({}, state, {
       errors: `you cannot enter the word ${action.payload}`
+    });
+  }
+  if (action.type === DATA_LOADED) {
+    return Object.assign({}, state, {
+      remoteArticles: state.remoteArticles.concat(action.payload)
     });
   }
   return state;
